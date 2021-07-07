@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-//import statistics from './statistical-data.json';
+
 import "./Statistic.css";
 
 const Statistic = ({ title, stats }) => {
@@ -9,10 +9,10 @@ const Statistic = ({ title, stats }) => {
       <h2 className="Title">{title}</h2>
 
       <ul className="Statlist">
-        {stats.map((statItem) => (
-          <li key={statItem.id} className="stat-item">
-            <span className="label">{statItem.label}</span>
-            <span className="percentage">{statItem.percentage}%</span>
+        {stats.map((stat) => (
+          <li key={stat.id} className="stat-item">
+            <span className="label">{stat.label}</span>
+            <span className="percentage">{stat.percentage}%</span>
           </li>
         ))}
       </ul>
@@ -26,8 +26,12 @@ Statistic.defaultProps = {
 
 Statistic.propTypes = {
   title: PropTypes.string,
-  label: PropTypes.string.isRequired,
-  percentage: PropTypes.number.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Statistic;

@@ -1,17 +1,8 @@
 import React from "react";
 
-//import user from './components/user.json';
 import PropTypes from "prop-types";
 import "./Profile.css";
-const Profile = ({
-  avatar,
-  name,
-  tag,
-  location,
-  statsFollowers,
-  statsViews,
-  statsLikes,
-}) => {
+const Profile = ({ avatar, name, tag, location, stats }) => {
   return (
     <div className="profile">
       <div className="description">
@@ -24,15 +15,15 @@ const Profile = ({
       <ul className="Stats">
         <li className="StatItem">
           <span className="label">Followers</span>
-          <span className="quantity">{statsFollowers}</span>
+          <span className="quantity">{stats.followers}</span>
         </li>
         <li className="StatItem">
           <span className="label">Views</span>
-          <span className="quantity">{statsViews}</span>
+          <span className="quantity">{stats.views}</span>
         </li>
         <li className="StatItem">
           <span className="label">Likes</span>
-          <span className="quantity">{statsLikes}</span>
+          <span className="quantity">{stats.likes}</span>
         </li>
       </ul>
     </div>
@@ -44,9 +35,13 @@ Profile.propTypes = {
   name: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  statsFollowers: PropTypes.number.isRequired,
-  statsViews: PropTypes.number.isRequired,
-  statsLikes: PropTypes.number.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      followers: PropTypes.number.isRequired,
+      views: PropTypes.number.isRequired,
+      likes: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Profile;

@@ -4,7 +4,7 @@ const FriendListItem = ({ isOnline, avatar, name }) => {
   return (
     <li className="item">
       <span className={isOnline > 0 ? "greenCircle" : "redCircle"}>
-        <Brightness1Icon></Brightness1Icon>
+        <Brightness1Icon />
       </span>
       <img className="Avatar" src={avatar} alt={name} width="150" />
       <p>{name}</p>
