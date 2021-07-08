@@ -6,7 +6,7 @@ import "./Statistic.css";
 const Statistic = ({ title, stats }) => {
   return (
     <section className="section">
-      <h2 className="Title">{title}</h2>
+      {title && <h2 className="Title">{title}</h2>}
 
       <ul className="Statlist">
         {stats.map((stat) => (
@@ -18,10 +18,6 @@ const Statistic = ({ title, stats }) => {
       </ul>
     </section>
   );
-};
-
-Statistic.defaultProps = {
-  title: "title",
 };
 
 Statistic.propTypes = {
